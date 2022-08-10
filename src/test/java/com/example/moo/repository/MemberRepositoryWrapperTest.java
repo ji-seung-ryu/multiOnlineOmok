@@ -1,36 +1,31 @@
 package com.example.moo.repository;
 
-import java.time.LocalDateTime;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.example.moo.service.Member;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
+
 public class MemberRepositoryWrapperTest {
 	
-	@Autowired
-	private MemberRepository memberRepository;
-	@Autowired
-	private MemberRepositoryWrapper memberRepositoryWrapper;
-	private final String name = "JISEUNG";
-	private final String encodedPassword = "123456789123456789";
+	private MemberRepository memberRepository = mock (MemberRepository.class);
+	private MemberRepositoryWrapper memberRepositoryWrapper = new MemberRepositoryWrapper(memberRepository);
 	
-	@Transactional
-	@Test
-	void saveTest () {
-		Member member = new Member();
-		member.setName(name);
-		member.setEncodedPassword(encodedPassword);
-		member.setCreateDate(LocalDateTime.now());
+	@Test 
+	void returnEmptyListWhenThereAreNoMembers() throws Exception {
+		givenThereAreNoMembers();
 		
-		this.memberRepositoryWrapper.save(member);
+		List<Member> memberList = memberRepositoryWrapper.findAll();
+		
+		assert(memberList.isEmpty());
+	}
+	
+	private void givenThereAreNoMembers() {
+		when(memberRepository.findAll()).thenReturn(new ArrayList<>());
 	}
 	
 }

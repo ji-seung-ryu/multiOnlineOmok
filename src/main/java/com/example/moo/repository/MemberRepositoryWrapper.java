@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Component;
+
 import com.example.moo.service.Member;
 
+@Component
 public class MemberRepositoryWrapper {
 	
 	private MemberRepository memberRepository;
@@ -37,7 +40,7 @@ public class MemberRepositoryWrapper {
 	}
 
 	private List<Member> convertMemberEntityListToMemberList (List<MemberEntity> memberEntityList){
-		List<Member> MemberList = new ArrayList();
+		List<Member> MemberList = new ArrayList<Member>();
 		
 		for (MemberEntity memberEntity : memberEntityList) {
 			Member member = convertMemberEntityToMember(memberEntity);

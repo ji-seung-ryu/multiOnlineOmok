@@ -20,9 +20,5 @@ public class PasswordEncoderWrapper {
 	boolean matches(CharSequence rawPassword, String encodedPassword) {
 		return passwordEncoder.matches(rawPassword, encodedPassword);
 	}
-	
-	public String returnHi() {
-		return "HI";
-	}
 
 }

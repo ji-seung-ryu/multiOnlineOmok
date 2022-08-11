@@ -17,14 +17,14 @@ public class databaseIntegrationTest {
 	@Autowired
 	MemberRepositoryWrapper memberRepositoryWrapper;
 	
-	private final String name = "JISEUNG";
-	private final String encodedPassword = "123456789123456789";
+	private final String NAME = "JISEUNG";
+	private final String ENCODEDPASSWORD = "123456789123456789";
 	
 	@Test
 	public void saveMember () {
 		Member member = new Member();
-		member.setName(name);
-		member.setEncodedPassword(encodedPassword);
+		member.setName(NAME);
+		member.setEncodedPassword(ENCODEDPASSWORD);
 		member.setCreateDate(LocalDateTime.now());
 		
 		this.memberRepositoryWrapper.save(member);

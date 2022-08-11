@@ -7,9 +7,10 @@ import java.util.Optional;
 import org.springframework.stereotype.Component;
 
 import com.example.moo.service.Member;
+import com.example.moo.service.MemberRepositoryInterface;
 
 @Component
-public class MemberRepositoryWrapper {
+public class MemberRepositoryWrapper implements MemberRepositoryInterface {
 	
 	private MemberRepository memberRepository;
 	
@@ -17,11 +18,13 @@ public class MemberRepositoryWrapper {
 		this.memberRepository = memberRepository;
 	}
 	
+	@Override
 	public void save (Member member) {
 		MemberEntity memberEntity = convertMemberToMemberEntity(member);
 		this.memberRepository.save(memberEntity);
 	}
 	
+	@Override
 	public Optional<Member> findByName (String name) {
 		Optional<MemberEntity> optionalMemberEntity = this.memberRepository.findByName (name);
 		
@@ -34,6 +37,7 @@ public class MemberRepositoryWrapper {
 		}
 	}
 	
+	@Override
 	public List<Member> findAll() {
 		List<MemberEntity> memberEntityList = this.memberRepository.findAll();
 		return convertMemberEntityListToMemberList(memberEntityList);

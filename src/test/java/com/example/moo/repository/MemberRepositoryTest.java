@@ -14,14 +14,14 @@ public class MemberRepositoryTest {
 	@Autowired
 	private MemberRepository memberRepository;
 	
-	private final String name = "JISEUNG";
-	private final String encodedPassword = "123456789123456789";
+	private final String NAME = "JISEUNG";
+	private final String ENCODEDPASSWORD = "123456789123456789";
 	
 	@Test
 	void saveMember() {
 		MemberEntity memberEntity = new MemberEntity();
-		memberEntity.setName(name);
-		memberEntity.setEncodedPassword(encodedPassword);
+		memberEntity.setName(NAME);
+		memberEntity.setEncodedPassword(ENCODEDPASSWORD);
 		memberEntity.setCreateDate(LocalDateTime.now());
 		
 		memberRepository.save(memberEntity);

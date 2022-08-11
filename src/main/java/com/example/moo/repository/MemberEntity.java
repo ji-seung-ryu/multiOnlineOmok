@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.example.moo.common.MemberStatusType;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +26,8 @@ public class MemberEntity {
 
     @Column(length = 200)
     private String encodedPassword;
+    
+    private MemberStatusType state;
 
     private LocalDateTime createDate;
 }

@@ -13,11 +13,11 @@ public class PasswordEncoderWrapper {
 		this.passwordEncoder = passwordEncoder;
 	}
 	
-	String encode(CharSequence rawPassword) {
+	public String encode(CharSequence rawPassword) {
 		return passwordEncoder.encode(rawPassword);
 	}
 	
-	boolean matches(CharSequence rawPassword, String encodedPassword) {
+	public boolean matches(CharSequence rawPassword, String encodedPassword) {
 		return passwordEncoder.matches(rawPassword, encodedPassword);
 	}
 

@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import com.example.moo.service.Member;
 import com.example.moo.service.MemberService;
 import com.example.moo.service.MemberNotFoundException;
-import com.example.moo.config.PasswordEncoderWrapper;
+//import com.example.moo.config.PasswordEncoderWrapper;
 
 @Component
 public class CheckValidity {
@@ -15,21 +15,24 @@ public class CheckValidity {
     private final static Logger LOGGER = LoggerFactory.getLogger(CheckValidity.class);
 
 	private final MemberService memberService;
-	private final PasswordEncoderWrapper passwordEncoderWrapper;
+//	private final PasswordEncoderWrapper passwordEncoderWrapper;
 	
-	public CheckValidity (MemberService memberService, PasswordEncoderWrapper passwordEncoderWrapper) {
+	public CheckValidity (MemberService memberService/*, PasswordEncoderWrapper passwordEncoderWrapper*/) {
 		this.memberService = memberService;
-		this.passwordEncoderWrapper = passwordEncoderWrapper;
+		//this.passwordEncoderWrapper = passwordEncoderWrapper;
 	}
 	
 	
 	public boolean isMember (MemberDto memberDto) {
+		/*
 		Member member = convertMemberDtoToMember(memberDto);
 		String name = member.getName();
 		String inputEncodedPassword = member.getEncodedPassword();
 		String actualEncodedPassword = getEncodedPasswordByName (name);
+		*/
+		return true;
 		
-		return this.passwordEncoderWrapper.matches(inputEncodedPassword, actualEncodedPassword);
+		//return this.passwordEncoderWrapper.matches(inputEncodedPassword, actualEncodedPassword);
 	}
 	
 	public String getEncodedPasswordByName (String name) {
@@ -39,6 +42,7 @@ public class CheckValidity {
 			return foundMember.getEncodedPassword();
 		} catch (MemberNotFoundException e) {
 			LOGGER.info("No Member, Name : {}", name);
+			
 			throw new NotFoundException();
 		}
 	}

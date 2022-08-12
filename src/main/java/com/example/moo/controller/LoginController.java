@@ -18,31 +18,33 @@ public class LoginController {
 	
     private final static Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
-	/*private final CheckValidity checkValidity;
+	private final CheckValidity checkValidity;
 	
 	public LoginController (CheckValidity checkValidity) {
 		this.checkValidity = checkValidity; 
 	}
-	*/
+	
     
 	@GetMapping("/login")
-	public @ResponseBody String returnLoginPage () {
-		return "LoginPage";
+	public String returnLoginPage () {
+		return "login";
 	}
 	
-	/*
+	
 	@PostMapping("/login")
-	public String postLoginForm (@ModelAttribute MemberDto memberDto, HttpSession httpSession) {
+	public @ResponseBody String postLoginForm (@ModelAttribute MemberDto memberDto, HttpSession httpSession) {
 		LOGGER.info("check whether Member or not, NAME : {}", memberDto.getName());
+		
+		// 오늘 이것만 하자 form에서 post 보냈을 떄 memberDto 어떻게 오는지, 처리해야 하는지 
 		if (this.checkValidity.isMember(memberDto)) {
 			LOGGER.info ("login accepted, NAME : {}", memberDto.getName());
-			return "memberList";
+			return "accept";
 
 		} else {
 			LOGGER.info("login denied, NAME : {}", memberDto.getName());
-			return "login";
+			return "deny";
 		}
 	}
-	*/
+	
 		
 }

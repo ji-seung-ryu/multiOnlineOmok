@@ -1,5 +1,6 @@
 package com.example.moo.controller;
 
+/*
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -21,4 +22,6 @@ public class BCryptTest {
 		
 		assertTrue(passwordEncoder.matches(rawPassword, encodedPassword));
 	}
+	
 }
+*/

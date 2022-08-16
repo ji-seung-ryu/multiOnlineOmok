@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MemberDto {
-	private String name;
+	public String name;
 	private String encodedPassword;
 	private MemberStatusType state;
 	private LocalDateTime createDate;

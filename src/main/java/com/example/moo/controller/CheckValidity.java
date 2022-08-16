@@ -22,6 +22,13 @@ public class CheckValidity {
 		//this.passwordEncoderWrapper = passwordEncoderWrapper;
 	}
 	
+	public MemberDto findMemberByNameAndPassword (String name, String password) {
+		// if pass
+		
+		Member foundMember = this.memberService.findMemberByName(name);
+		return toDto (foundMember);
+		
+	}
 	
 	public boolean isMember (MemberDto memberDto) {
 		/*
@@ -54,5 +61,15 @@ public class CheckValidity {
 		member.setEncodedPassword(memberDto.getEncodedPassword());
 		
 		return member;
+	}
+	
+	private MemberDto toDto (Member member) {
+		MemberDto memberDto = new MemberDto ();
+		memberDto.setName(member.getName());
+		memberDto.setEncodedPassword(member.getEncodedPassword());
+		memberDto.setState(member.getState());
+		memberDto.setCreateDate(member.getCreateDate());
+		
+		return memberDto;
 	}
 }

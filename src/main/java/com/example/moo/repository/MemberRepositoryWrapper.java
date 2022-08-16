@@ -57,6 +57,7 @@ public class MemberRepositoryWrapper implements MemberRepositoryInterface {
 		Member member = new Member();
 		member.setName (memberEntity.getName());
 		member.setEncodedPassword(memberEntity.getEncodedPassword());
+		member.setState(memberEntity.getState());
 		member.setCreateDate(memberEntity.getCreateDate());
 		
 		return member;
@@ -66,6 +67,7 @@ public class MemberRepositoryWrapper implements MemberRepositoryInterface {
 		MemberEntity memberEntity = new MemberEntity();
 		memberEntity.setName(member.getName());
 		memberEntity.setEncodedPassword(member.getEncodedPassword());
+		memberEntity.setState(member.getState());
 		memberEntity.setCreateDate(member.getCreateDate());
 		
 		return memberEntity;

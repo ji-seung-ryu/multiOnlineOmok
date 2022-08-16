@@ -1,7 +1,8 @@
-<form th:action="@{/login}" th:object=${loginForm} method="post">
+<form th:action="@{/signup}" th:object=${signupForm} method="post">
 		<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
             <div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
         </div>
+        
         <div class="mb-3">
             <label for="name" class="form-label">이름</label>
             <input type="text" name="name" class="form-control">

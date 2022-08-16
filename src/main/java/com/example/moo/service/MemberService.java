@@ -17,7 +17,7 @@ public class MemberService {
 		this.memberRepositoryInterface.save(member);
 	}
 	
-	public Member findMemberByName (String name) {
+	public Member findMemberByName (String name) throws MemberNotFoundException {
 		Optional <Member> member = this.memberRepositoryInterface.findByName(name);
 		if (member.isEmpty()) {
 			throw new MemberNotFoundException();

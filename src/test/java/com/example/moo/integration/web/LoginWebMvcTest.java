@@ -23,8 +23,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.moo.common.MemberStatusType;
 import com.example.moo.controller.CheckValidity;
-import com.example.moo.controller.LoginController;
 import com.example.moo.controller.MemberDto;
+import com.example.moo.controller.login.LoginController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest (LoginController.class)

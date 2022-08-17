@@ -1,6 +1,6 @@
 package com.example.moo.config;
 
-/*
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class PasswordEncoderWrapperTest {
 	
 	@Autowired
-	private PasswordEncoderWrapper passwordEncoderWrapper;
+	private PasswordEncoder passwordEncoderWrapper;
 	
 	@Test 
 	void Encode () {
@@ -24,4 +24,3 @@ public class PasswordEncoderWrapperTest {
 		assertTrue(passwordEncoderWrapper.matches(rawPassword, encodedPassword));
 	}
 }
-*/

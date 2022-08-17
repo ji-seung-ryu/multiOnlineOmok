@@ -1,6 +1,6 @@
 package com.example.moo.integration.web;
 
-import static org.hamcrest.CoreMatchers.containsString;
+/*import static org.hamcrest.CoreMatchers.containsString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -28,22 +28,21 @@ import com.example.moo.controller.login.LoginController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest (LoginController.class)
+
 public class LoginWebMvcTest {
 	@Autowired
 	private MockMvc mockMvc;
 	
-	@MockBean 
-	private CheckValidity checkValidity;
 	
 	private static final String NAME = "jiseung";
 	private static final String ENCODEDPASSWORD = "asdasd";
 	
-	/*
+	
 	@Test
 	public void returnLoginPage() throws Exception {
 		this.mockMvc.perform(get("/login")).andDo(print()).andExpect(status().isOk())
 		.andExpect(content().string(containsString("LoginPage")));
-	}*/
+	}
 	
 	@Test
 	public void returnTheMemberExist () throws Exception {
@@ -93,3 +92,4 @@ public class LoginWebMvcTest {
 	    return result.toString();
 	 }
 }
+*/

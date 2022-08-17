@@ -20,10 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.moo.controller.CheckValidity;
+import com.example.moo.config.PasswordEncoder;
 import com.example.moo.controller.MemberDto;
 import com.example.moo.controller.NotFoundException;
-import com.example.moo.controller.SessionConstants;
 import com.example.moo.service.Member;
 import com.example.moo.service.MemberService;
 
@@ -55,6 +54,9 @@ public class LoginController {
 		try {
 			Member member = this.loginNeedService.doLogin (loginForm.getName(), loginForm.getPassword());
 			redirectAttributes.addAttribute("name", member.getName());
+			HttpSession session = request.getSession();
+			session.setAttribute(SessionConstants.LOGIN_MEMBER, member);
+			
 			return "redirect:/memberList";
 		} catch (NameNotFoundException e) {
 			LOGGER.info("not found, NAME : {}", loginForm.getName());

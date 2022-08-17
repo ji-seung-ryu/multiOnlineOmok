@@ -1,5 +1,7 @@
 package com.example.moo.controller.login;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -12,8 +14,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.moo.controller.CheckValidity;
 import com.example.moo.controller.MemberDto;
@@ -40,7 +45,7 @@ public class LoginController {
 	
 	
 	@PostMapping("/login")
-	public String doLogin (@Valid LoginForm loginForm, BindingResult bindingResult, HttpServletRequest request) {
+	public String doLogin (@Valid LoginForm loginForm, BindingResult bindingResult, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		if (bindingResult.hasErrors()) {
 			 LOGGER.info("form has error!");
 	         return "login";
@@ -49,6 +54,7 @@ public class LoginController {
 		
 		try {
 			Member member = this.loginNeedService.doLogin (loginForm.getName(), loginForm.getPassword());
+			redirectAttributes.addAttribute("name", member.getName());
 			return "redirect:/memberList";
 		} catch (NameNotFoundException e) {
 			LOGGER.info("not found, NAME : {}", loginForm.getName());
@@ -59,6 +65,5 @@ public class LoginController {
 		}
 		
 	}
-	
 		
 }

@@ -41,14 +41,14 @@ public class SignupController {
 	
 		try {
 			LOGGER.info("check whether duplicated or not, NAME : {}", signupForm.getName());
-			this.signupNeedService.throwWhenNotDuplicated(signupForm.getName());
-			LOGGER.info("duplicated one, NAME : {}", signupForm.getName());
-			return "signup";
-			
-		} catch (NotFoundException e) {
+			this.signupNeedService.throwWhenAlreadyExist(signupForm.getName());
 			LOGGER.info("Not duplicated one, NAME : {}", signupForm.getName());
 			this.signupNeedService.register(signupForm.getName(), signupForm.getPassword());
-			return "redirect:/login";
+			return "redirect:/login";			
+		} catch (AlreadyExistException e) {
+			LOGGER.info("duplicated one, NAME : {}", signupForm.getName());
+			return "signup";
+
 		} 
 		
 	}

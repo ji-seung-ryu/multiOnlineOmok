@@ -19,12 +19,13 @@ public class SignupNeedService {
 		this.memberService = memberService;
 	}
 	
-	public void throwWhenNotDuplicated (String name) {
+	public void throwWhenAlreadyExist (String name) {
 		try {
 			Member member = this.memberService.findMemberByName(name);
+			throw new AlreadyExistException();
 			
 		} catch (MemberNotFoundException e) {
-			throw new NotFoundException();
+			
 		}
 	}
 	

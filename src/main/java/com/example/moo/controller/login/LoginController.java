@@ -33,19 +33,15 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public String doLogin(@Valid LoginForm loginForm, BindingResult bindingResult, HttpServletRequest request,
-			RedirectAttributes redirectAttributes) {
+	public String handleLoginForm(@Valid LoginForm loginForm, BindingResult bindingResult, HttpServletRequest request) {
 		if (bindingResult.hasErrors()) {
 			LOGGER.info("form has error!");
 			return "login";
 		}
 
 		try {
-			Member member = this.loginNeedService.doLogin(loginForm.getName(), loginForm.getPassword());
-			redirectAttributes.addAttribute("name", member.getName());
-			HttpSession session = request.getSession();
-			session.setAttribute(SessionConstants.LOGIN_MEMBER, member);
-
+			Member loginMember = doLogin(loginForm);
+			setSession(request, loginMember);
 			return "redirect:/memberList";
 		} catch (NameNotFoundException e) {
 			LOGGER.info("not found, NAME : {}", loginForm.getName());
@@ -54,7 +50,18 @@ public class LoginController {
 			LOGGER.info("wrong password, NAME : {}", loginForm.getName());
 			return "login";
 		}
+	}
 
+	public Member doLogin(LoginForm loginForm) throws NameNotFoundException, WrongPasswordException {
+
+		Member member = this.loginNeedService.doLogin(loginForm.getName(), loginForm.getPassword());
+		return member;
+
+	}
+
+	private void setSession(HttpServletRequest request, Member loginMember) {
+		HttpSession session = request.getSession();
+		session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMember);
 	}
 
 }

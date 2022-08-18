@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Member {
+    private Integer id;
 	private String name;
 	private String encodedPassword;
 	private MemberStatusType state;

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.moo.common.MemberStatusType;
 import com.example.moo.service.Member;
 
 @Controller
@@ -41,7 +42,9 @@ public class LoginController {
 
 		try {
 			Member loginMember = doLogin(loginForm);
+			activateMember(loginMember);
 			setSession(request, loginMember);
+			
 			return "redirect:/memberList";
 		} catch (NameNotFoundException e) {
 			LOGGER.info("not found, NAME : {}", loginForm.getName());
@@ -59,6 +62,11 @@ public class LoginController {
 
 	}
 
+	private void activateMember(Member member) {
+		member.setState(MemberStatusType.ACTIVE);
+		this.loginNeedService.saveMember(member);
+	}
+		
 	private void setSession(HttpServletRequest request, Member loginMember) {
 		HttpSession session = request.getSession();
 		session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMember);

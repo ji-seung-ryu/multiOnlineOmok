@@ -37,4 +37,8 @@ public class LoginNeedService {
 			throw new NameNotFoundException();
 		}
 	}
+	
+	public void saveMember (Member member) {
+		this.memberService.saveMember(member);
+	}
 }

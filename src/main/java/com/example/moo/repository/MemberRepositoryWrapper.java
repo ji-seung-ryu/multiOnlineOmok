@@ -55,6 +55,7 @@ public class MemberRepositoryWrapper implements MemberRepositoryInterface {
 	}
 	private Member convertMemberEntityToMember (MemberEntity memberEntity) {
 		Member member = new Member();
+		member.setId(memberEntity.getId());
 		member.setName (memberEntity.getName());
 		member.setEncodedPassword(memberEntity.getEncodedPassword());
 		member.setState(memberEntity.getState());
@@ -65,6 +66,7 @@ public class MemberRepositoryWrapper implements MemberRepositoryInterface {
 	
 	private MemberEntity convertMemberToMemberEntity (Member member) {
 		MemberEntity memberEntity = new MemberEntity();
+		memberEntity.setId(member.getId());
 		memberEntity.setName(member.getName());
 		memberEntity.setEncodedPassword(member.getEncodedPassword());
 		memberEntity.setState(member.getState());

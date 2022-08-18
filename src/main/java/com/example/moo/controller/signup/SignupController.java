@@ -10,8 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.moo.controller.NotFoundException;
-
 @Controller
 public class SignupController {
 	
@@ -33,7 +31,7 @@ public class SignupController {
 	}
 	
 	@PostMapping("/signup")
-	public String checkLogin (@Valid SignupForm signupForm, BindingResult bindingResult, HttpServletRequest request) {
+	public String handleSignupForm (@Valid SignupForm signupForm, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			LOGGER.info("form has error!");
 	        return "signup";
@@ -52,5 +50,5 @@ public class SignupController {
 		} 
 		
 	}
-	
+		
 }

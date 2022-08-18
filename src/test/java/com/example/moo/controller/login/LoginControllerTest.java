@@ -27,17 +27,18 @@ public class LoginControllerTest {
 	}
 	
 	@Test
-	public void loginNameNotFoundException() {
+	public void loginNameNotFoundTest() {
 		givenAMemberNotExist();
 		LoginForm loginForm = givenaALoginFormPosted();
         assertThatExceptionOfType(NameNotFoundException.class).isThrownBy(() -> loginController.doLogin(loginForm));
 	}
 	
 	@Test 
-	public void loginWrongPasswordException() {
+	public void loginWrongPasswordTest() {
 		givenAWrongPassword();
 		LoginForm loginForm = givenaALoginFormPosted();
-        assertThatExceptionOfType(WrongPasswordException.class).isThrownBy(() -> loginController.doLogin(loginForm));	}
+        assertThatExceptionOfType(WrongPasswordException.class).isThrownBy(() -> loginController.doLogin(loginForm));	
+    }
 		
 	private Member givenAMemberExist() {
 		Member member = new Member();

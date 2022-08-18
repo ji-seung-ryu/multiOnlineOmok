@@ -24,12 +24,16 @@ public class LoginNeedService {
 
 	public Member doLogin(String name, String password) throws NameNotFoundException, WrongPasswordException {
 		try {
+			LOGGER.info("find member by NAME : {}", name);
 			Member member = this.memberService.findMemberByName(name);
-			if (!this.passwordEncoder.matches(password, member.getEncodedPassword()))
+			if (!this.passwordEncoder.matches(password, member.getEncodedPassword())) {
+				LOGGER.info("Wrong password, NAME : {}", name);
 				throw new WrongPasswordException();
-
+			}
+			LOGGER.info("Login Success, NAME : {}", name);
 			return member;
 		} catch (MemberNotFoundException e) {
+			LOGGER.info("Name is not found, NAME : {}", name);
 			throw new NameNotFoundException();
 		}
 	}

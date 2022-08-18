@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import com.example.moo.common.MemberStatusType;
 import com.example.moo.config.PasswordEncoder;
-import com.example.moo.controller.NotFoundException;
 import com.example.moo.service.Member;
 import com.example.moo.service.MemberNotFoundException;
 import com.example.moo.service.MemberService;

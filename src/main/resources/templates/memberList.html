@@ -1,3 +1,5 @@
     <p th:text="${name}">Test</p>
-
+<tr th:each="member: ${memberList}">
+    <td th:text="${member.name}" /><br>
+</tr>
 <a href="logout">logout</a>

@@ -27,7 +27,8 @@ public class MemberEntity {
     @Column(length = 200)
     private String encodedPassword;
     
-    private MemberStatusType state;
+    @Column(length = 200)
+    private String state;
 
     private LocalDateTime createDate;
 }

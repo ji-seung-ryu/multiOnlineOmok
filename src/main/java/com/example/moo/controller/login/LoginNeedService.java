@@ -22,7 +22,7 @@ public class LoginNeedService {
 
 	}
 
-	public Member doLogin(String name, String password) throws NameNotFoundException, WrongPasswordException {
+	public Member doLogin(String name, String password){
 		try {
 			LOGGER.info("find member by NAME : {}", name);
 			Member member = this.memberService.findMemberByName(name);

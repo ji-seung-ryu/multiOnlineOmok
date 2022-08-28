@@ -16,6 +16,6 @@ public class MemberListNeedService {
 	}
 	
 	public List<Member> findAllMember() {
-		return this.memberService.findAllMember();
+		return this.memberService.findActiveMember();
 	}
 }

@@ -24,7 +24,7 @@ public class MemberRepositoryWrapper implements MemberRepositoryInterface {
 	
 	@Override
 	public void save (Member member) {
-		MemberEntity memberEntity = convertMemberToMemberEntity(member);
+		MemberEntity memberEntity = toEntity(member);
 		this.memberRepository.save(memberEntity);
 	}
 	
@@ -34,7 +34,7 @@ public class MemberRepositoryWrapper implements MemberRepositoryInterface {
 		
 		if (optionalMemberEntity.isPresent()) {
 			MemberEntity memberEntity = optionalMemberEntity.get();
-			Member member = convertMemberEntityToMember (memberEntity);
+			Member member = toCore (memberEntity);
 			return Optional.of(member);
 		} else {
 			return Optional.empty();
@@ -42,25 +42,24 @@ public class MemberRepositoryWrapper implements MemberRepositoryInterface {
 	}
 	
 	@Override
-	public List<Member> findAll() {
-		
+	public List<Member> findActive() {
 		List<MemberEntity> memberEntityList = this.memberRepository.findAll();
-		List<Member>memberList = convertMemberEntityListToMemberList(memberEntityList);
+		List<Member>memberList = toCoreList(memberEntityList);
 		return excludeInactive(memberList);
 	}
 
-	private List<Member> convertMemberEntityListToMemberList (List<MemberEntity> memberEntityList){
+	private List<Member> toCoreList (List<MemberEntity> memberEntityList){
 		List<Member> MemberList = new ArrayList<Member>();
 		
 		for (MemberEntity memberEntity : memberEntityList) {
-			Member member = convertMemberEntityToMember(memberEntity);
+			Member member = toCore(memberEntity);
 			MemberList.add(member);
 		}
 		
 		return MemberList;
 	}
 	
-	private Member convertMemberEntityToMember (MemberEntity memberEntity) {
+	private Member toCore (MemberEntity memberEntity) {
 		Member member = new Member();
 		member.setId(memberEntity.getId());
 		member.setName (memberEntity.getName());
@@ -71,7 +70,7 @@ public class MemberRepositoryWrapper implements MemberRepositoryInterface {
 		return member;
 	}
 	
-	private MemberEntity convertMemberToMemberEntity (Member member) {
+	private MemberEntity toEntity (Member member) {
 		MemberEntity memberEntity = new MemberEntity();
 		memberEntity.setId(member.getId());
 		memberEntity.setName(member.getName());
@@ -85,9 +84,7 @@ public class MemberRepositoryWrapper implements MemberRepositoryInterface {
 	private List<Member> excludeInactive (List<Member> memberList) {
 		List<Member> excludedMemberList = new ArrayList<Member>();
 		for (Member member : memberList) {
-			LOGGER.info("In memberList, NAME : {}, STATE: {}", member.getName(), member.getState());
 			if (member.getState() == MemberStatusType.ACTIVE) {
-				LOGGER.info("Active Member,0 NAME : {}", member.getName());
 				excludedMemberList.add(member);
 			}
 		}

@@ -23,7 +23,7 @@ public class MemberService {
 		this.memberRepositoryInterface.save(member);
 	}
 	
-	public Member findMemberByName (String name) throws MemberNotFoundException {
+	public Member findMemberByName (String name){
 		Optional <Member> member = this.memberRepositoryInterface.findByName(name);
 		if (member.isEmpty()) {
 			throw new MemberNotFoundException();
@@ -32,9 +32,9 @@ public class MemberService {
 		return member.get();
 	}
 	
-	public List<Member> findAllMember () {
-		LOGGER.info("Find All Member");
-		return this.memberRepositoryInterface.findAll();
+	public List<Member> findActiveMember () {
+		LOGGER.info("Find Active Member");
+		return this.memberRepositoryInterface.findActive();
 	}
 	
 }

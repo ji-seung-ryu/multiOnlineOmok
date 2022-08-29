@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.example.moo.config.PasswordEncoder;
-import com.example.moo.service.Member;
-import com.example.moo.service.MemberNotFoundException;
-import com.example.moo.service.MemberService;
+import com.example.moo.service.member.Member;
+import com.example.moo.service.member.MemberNotFoundException;
+import com.example.moo.service.member.MemberService;
 
 @Component
 public class LoginNeedService {

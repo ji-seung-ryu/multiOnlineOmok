@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.example.moo.service.Member;
-import com.example.moo.service.MemberService;
+import com.example.moo.service.member.Member;
+import com.example.moo.service.member.MemberService;
 
 @Component
 public class MemberListNeedService {

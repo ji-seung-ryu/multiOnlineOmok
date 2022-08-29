@@ -8,9 +8,9 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.Test;
 
 import com.example.moo.config.PasswordEncoder;
-import com.example.moo.service.Member;
-import com.example.moo.service.MemberNotFoundException;
-import com.example.moo.service.MemberService;
+import com.example.moo.service.member.Member;
+import com.example.moo.service.member.MemberNotFoundException;
+import com.example.moo.service.member.MemberService;
 
 public class SignupNeedServiceTest {
 	private final String NAME = "jiseung";

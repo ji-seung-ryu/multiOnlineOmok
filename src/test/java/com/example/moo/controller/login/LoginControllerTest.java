@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 
 import com.example.moo.common.MemberStatusType;
-import com.example.moo.service.Member;
+import com.example.moo.service.member.Member;
 
 public class LoginControllerTest {
 	private static final String NAME = "jiseung";

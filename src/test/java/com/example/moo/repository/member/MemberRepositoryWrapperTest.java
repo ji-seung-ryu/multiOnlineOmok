@@ -1,4 +1,4 @@
-package com.example.moo.repository;
+package com.example.moo.repository.member;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -12,7 +12,10 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 import com.example.moo.common.MemberStatusType;
-import com.example.moo.service.Member;
+import com.example.moo.repository.member.MemberEntity;
+import com.example.moo.repository.member.MemberRepository;
+import com.example.moo.repository.member.MemberRepositoryWrapper;
+import com.example.moo.service.member.Member;
 
 
 public class MemberRepositoryWrapperTest {

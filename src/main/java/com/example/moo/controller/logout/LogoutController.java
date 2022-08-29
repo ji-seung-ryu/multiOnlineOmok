@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.moo.common.MemberStatusType;
 import com.example.moo.controller.login.SessionConstants;
 import com.example.moo.controller.memberList.MemberListController;
-import com.example.moo.service.Member;
-import com.example.moo.service.MemberService;
+import com.example.moo.service.member.Member;
+import com.example.moo.service.member.MemberService;
 
 @Controller
 public class LogoutController {

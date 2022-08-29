@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.moo.controller.login.LoginController;
 import com.example.moo.controller.login.SessionConstants;
-import com.example.moo.service.Member;
+import com.example.moo.service.member.Member;
 
 @Controller
 public class MemberListController {

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.moo.common.MemberStatusType;
-import com.example.moo.service.Member;
+import com.example.moo.service.member.Member;
 
 @Controller
 public class LoginController {

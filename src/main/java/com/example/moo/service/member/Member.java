@@ -1,4 +1,4 @@
-package com.example.moo.service;
+package com.example.moo.service.member;
 
 import java.time.LocalDateTime;
 

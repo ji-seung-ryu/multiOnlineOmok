@@ -1,4 +1,4 @@
-package com.example.moo.repository;
+package com.example.moo.repository.member;
 
 import java.time.LocalDateTime;
 
@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.example.moo.repository.member.MemberEntity;
+import com.example.moo.repository.member.MemberRepository;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest

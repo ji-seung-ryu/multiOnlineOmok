@@ -1,4 +1,4 @@
-package com.example.moo.repository;
+package com.example.moo.repository.omok;
 
 import java.util.Optional;
 

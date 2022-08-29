@@ -11,6 +11,11 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
+import com.example.moo.service.member.Member;
+import com.example.moo.service.member.MemberNotFoundException;
+import com.example.moo.service.member.MemberRepositoryInterface;
+import com.example.moo.service.member.MemberService;
+
 public class MemberServiceTest {
 	private final String NAME = "jiseung";
 	private final String ENCODEDPASSWORD = "123456789123456789";

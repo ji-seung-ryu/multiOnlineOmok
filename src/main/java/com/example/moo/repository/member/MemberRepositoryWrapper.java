@@ -1,4 +1,4 @@
-package com.example.moo.repository;
+package com.example.moo.repository.member;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.example.moo.common.MemberStatusType;
-import com.example.moo.service.Member;
-import com.example.moo.service.MemberRepositoryInterface;
+import com.example.moo.service.member.Member;
+import com.example.moo.service.member.MemberRepositoryInterface;
 
 @Component
 public class MemberRepositoryWrapper implements MemberRepositoryInterface {

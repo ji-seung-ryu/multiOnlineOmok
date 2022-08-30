@@ -2,7 +2,9 @@ package com.example.moo.service.omok;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
 
+@Service
 public class OmokRoomService {
 	
 	private final OmokRoomRepositoryInterface omokRoomRepositoryInterface;
@@ -19,6 +21,7 @@ public class OmokRoomService {
 		omokRoom.setRoomId(UUID.randomUUID().toString());
 		omokRoom.setTurn(BLACK_TURN);
 		omokRoom.setBoard(initBoard());
+		save(omokRoom);
 		
 		return omokRoom;
 	}

@@ -17,7 +17,7 @@ public class OmokRoomRepositoryTest {
 	@Autowired
 	private OmokRoomRepository omokRoomRepository;
 	
-	private final String ROOMID = "12";
+	private final String ROOMID = "1233";
 	private final int turn = 1;
 	private final int BOARD_SIZE = 19;
 	private final int NONE = 2; 
@@ -27,20 +27,21 @@ public class OmokRoomRepositoryTest {
 		OmokRoomEntity entity = new OmokRoomEntity();
 		entity.setRoomId(ROOMID);
 		entity.setTurn(turn);
+		System.out.println(to1d(initBoard()));
 		entity.setBoard(to1d(initBoard()));
 		
 		this.omokRoomRepository.save(entity);
 		
 		Optional<OmokRoomEntity> foundEntity = this.omokRoomRepository.findByRoomId(ROOMID);
 		
-		//assert(foundEntity.get().getBoard()).equals(entity.getBoard());
+		assert(foundEntity.get().getBoard()).equals(entity.getBoard());
 	}
 	
-	private int[] to1d(int[][] board2d) {
-		int[] board1d = new int [BOARD_SIZE* BOARD_SIZE];
+	private String to1d(int[][] board2d) {
+		String board1d = new String();
 		for (int i=1;i<BOARD_SIZE;i++) {
 			for (int j=1;j<BOARD_SIZE;j++) {
-				board1d[i*BOARD_SIZE + j] = board2d[i][j];
+				board1d += board2d[i][j];
 			}
 		}
 		return board1d;

@@ -53,21 +53,22 @@ public class OmokRoomRepositoryWrapper implements OmokRoomRepositoryInterface {
 		return omokRoom;
 	}
 	
-	private int[] to1d(int[][] board2d) {
-		int[] board1d = new int [BOARD_SIZE* BOARD_SIZE];
+	private String to1d(int[][] board2d) {
+		String board1d = new String();
 		for (int i=1;i<BOARD_SIZE;i++) {
 			for (int j=1;j<BOARD_SIZE;j++) {
-				board1d[i*BOARD_SIZE + j] = board2d[i][j];
+				board1d += board2d[i][j];
 			}
 		}
 		return board1d;
 	}
 	
-	private int[][] to2d (int[] board1d) {
+	private int[][] to2d (String board1d) {
 		int[][] board2d = new int[BOARD_SIZE][BOARD_SIZE];
 		for (int i=1;i<BOARD_SIZE;i++) {
 			for (int j=1;j<BOARD_SIZE;j++) {
-				board2d[i][j] = board1d[i*BOARD_SIZE + j];
+				
+				board2d[i][j] = board1d.charAt((i-1)*(BOARD_SIZE-1) + j-1) - '0';
 			}
 		}
 		return board2d;

@@ -3,6 +3,7 @@ package com.example.moo.repository.omok;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,7 @@ public class OmokRoomEntity {
     @Column
 	private int turn;
 	
-    @Column
-    private int[] board;
+    @Lob
+    private String board;
 
 }

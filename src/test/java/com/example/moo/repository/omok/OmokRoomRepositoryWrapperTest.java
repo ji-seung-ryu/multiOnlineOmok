@@ -1,5 +1,7 @@
 package com.example.moo.repository.omok;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,8 @@ public class OmokRoomRepositoryWrapperTest {
 	public void findTest() {
 		omokRoom = getOmokRoom();
 		this.omokRoomRepositoryWrapper.save(omokRoom);
-	//	OmokRoom foundRoom = this.omokRoomRepositoryWrapper.findByRoomId(ROOMID).get();
-	//	assert(foundRoom).equals(omokRoom);
+		OmokRoom foundRoom = this.omokRoomRepositoryWrapper.findByRoomId(ROOMID).get();
+		assertArrayEquals(foundRoom.getBoard(), omokRoom.getBoard());
 	}
 	
 	private OmokRoom getOmokRoom() {
@@ -49,4 +51,5 @@ public class OmokRoomRepositoryWrapperTest {
 		
 		return board; 
 	}
+	
 }

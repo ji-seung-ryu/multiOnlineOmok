@@ -1,4 +1,4 @@
-package com.example.moo.config;
+package com.example.moo.config.encoder;
 
 import org.springframework.stereotype.Component;
 

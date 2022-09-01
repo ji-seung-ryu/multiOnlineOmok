@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.example.moo.config.PasswordEncoder;
+import com.example.moo.config.encoder.PasswordEncoder;
 import com.example.moo.service.member.Member;
 import com.example.moo.service.member.MemberNotFoundException;
 import com.example.moo.service.member.MemberService;

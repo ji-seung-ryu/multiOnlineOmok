@@ -1,4 +1,4 @@
-package com.example.moo.config;
+package com.example.moo.config.encoder;
 
 //Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 //

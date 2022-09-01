@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.moo.config;
+package com.example.moo.config.encoder;
 
 import java.security.SecureRandom;
 import java.util.regex.Pattern;

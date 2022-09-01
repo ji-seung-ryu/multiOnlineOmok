@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import org.springframework.stereotype.Component;
 
 import com.example.moo.common.MemberStatusType;
-import com.example.moo.config.PasswordEncoder;
+import com.example.moo.config.encoder.PasswordEncoder;
 import com.example.moo.service.member.Member;
 import com.example.moo.service.member.MemberNotFoundException;
 import com.example.moo.service.member.MemberService;

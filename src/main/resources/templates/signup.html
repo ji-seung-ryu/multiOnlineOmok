@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>SIGNUP FORM</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/signup.css}">
+
+</head>
+
+<body>
+
+	<div class="login-page">
+		<div class="form">
+			<form class="register-form"  th:action="@{/signup}" th:object=${signupForm} method="post">
+				<input type="text" name="name" placeholder="name" />
+				<input type="password" name="password" placeholder="password" />
+				<button>create</button>
+				<p class="message">Already registered? <a href="/login">Log In</a></p>
+			</form>
+			
+		</div>
+	</div>
+
+</body>
+	
+</html>

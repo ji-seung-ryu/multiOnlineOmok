@@ -1,0 +1,52 @@
+*{
+  margin:0;
+  padding:0;
+}
+html{
+
+  min-width:600px;
+  height:100%;
+  width:100%;
+
+}
+body{
+  height:100%;
+  width:100%;
+  display:flex;
+}
+
+.board{
+  background-color: #D7C983;
+  width: fit-content;
+  height: fit-content;
+  margin:auto;
+}
+.row{
+  display:flex;
+
+}
+.box{
+  position: relative;
+  width:30px;
+  height:30px;
+  border: solid black;
+  border-width: 1px;
+
+}
+
+.stone {
+  z-index:1;
+  position:absolute;
+  bottom:-16px;
+  right:-16px;
+  width:32px;
+  height:32px;
+  content:'';
+  border-radius: 100%;
+
+}
+
+.stone:hover{
+  background:red;
+
+}

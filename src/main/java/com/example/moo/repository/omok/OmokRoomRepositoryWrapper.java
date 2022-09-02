@@ -38,6 +38,8 @@ public class OmokRoomRepositoryWrapper implements OmokRoomRepositoryInterface {
 	private OmokRoomEntity toEntity(OmokRoom omokRoom) {
 		OmokRoomEntity entity = new OmokRoomEntity();
 		entity.setRoomId(omokRoom.getRoomId());
+		entity.setCreator(omokRoom.getCreator());
+		entity.setOpposite(omokRoom.getOpposite());
 		entity.setTurn(omokRoom.getTurn());
 		entity.setBoard(to1d(omokRoom.getBoard()));
 		
@@ -47,6 +49,8 @@ public class OmokRoomRepositoryWrapper implements OmokRoomRepositoryInterface {
 	private OmokRoom toCore(OmokRoomEntity omokRoomEntity) {
 		OmokRoom omokRoom = new OmokRoom();
 		omokRoom.setRoomId(omokRoomEntity.getRoomId());
+		omokRoom.setCreator(omokRoomEntity.getCreator());
+		omokRoom.setOpposite(omokRoomEntity.getOpposite());
 		omokRoom.setTurn(omokRoomEntity.getTurn());
 		omokRoom.setBoard(to2d(omokRoomEntity.getBoard()));
 		

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.moo.service.omok.FullRoomException;
@@ -24,17 +25,10 @@ public class OmokRoomController {
 		this.omokRoomService = omokRoomService;
 	}
 	
-	@GetMapping("/create")
-	public String createOmokRoom() {
-		OmokRoom omokRoom = this.omokRoomService.createOmokRoom();
-		LOGGER.info("Create room, ID : {}", omokRoom.getRoomId());
-		return "redirect:/enter/" + omokRoom.getRoomId(); 
-	}
-	
 	@PostMapping("/create")
 	@ResponseBody
-	public OmokRoom createRoom() {
-		OmokRoom room = this.omokRoomService.createOmokRoom();
+	public OmokRoom createRoom(@RequestParam String creator, @RequestParam String opposite) {
+		OmokRoom room = this.omokRoomService.createOmokRoom(creator, opposite);
 		LOGGER.info("Create room, ID : {}", room.getRoomId());
 		return room;
 	}

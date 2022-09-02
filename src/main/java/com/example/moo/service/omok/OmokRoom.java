@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class OmokRoom {	
 	private String roomId;
+	private String creator, opposite;
 	private int turn;
 	private int[][] board;
 	

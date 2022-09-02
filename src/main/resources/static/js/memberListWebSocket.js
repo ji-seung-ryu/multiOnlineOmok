@@ -89,20 +89,24 @@ function getRefuse(opposite){
 	console.log (opposite + " refused!"); 
 }
 
-function getAgree(opposite){
-	var roomId = createOmokRoom();
+async function getAgree(opposite){
+	var roomId = await createOmokRoom(opposite);
+	console.log("roomID: ",roomId);
 	sendRoomId(opposite, roomId);
 	enterRoom(roomId);
 }
 
-function createOmokRoom(){
-	axios.post('/create')
-					.then(
-						response => {
-							return response.data.roomId;
-						}
-					)
-					.catch(response => { alert(response); });
+async function createOmokRoom(opposite){
+	var params = returnParams(opposite);
+	const response = await axios.post('/create', params);
+	return response.data.roomId;
+}
+
+function returnParams(opposite){
+	var params = new URLSearchParams();
+	params.append("creator", username);
+	params.append("opposite", opposite);
+	return params;
 }
 
 function sendRoomId(opposite, roomId){

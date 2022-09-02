@@ -18,6 +18,8 @@ public class OmokRoomControllerTest {
 	private final int BLACK_TURN = 0;
 	private final int BOARD_SIZE = 19; 
 	private final int NONE = 2; 
+	private final String CREATOR = "creator";
+	private final String OPPOSITE = "opposite";
 	private final String ROOMID = "12341234";
 	private final String WRONG_ROOMID = "12341111234";
 	private final String FULL_ROOMID = "FULLROOMID";
@@ -27,11 +29,6 @@ public class OmokRoomControllerTest {
 	private OmokRoomService omokRoomService = mock(OmokRoomService.class);
 	private final OmokRoomController omokRoomController = new OmokRoomController(omokRoomService);
 	
-	@Test
-	void createRoom() {
-		givenReadyToCreate();
-		omokRoomController.createOmokRoom();
-	}
 	
 	@Test
 	void enterRoom() {
@@ -54,15 +51,6 @@ public class OmokRoomControllerTest {
 		String returnUrl = omokRoomController.enterOmokRoom(FULL_ROOMID, model);
 		assertThat(returnUrl).isNotEqualTo(CORRECT_URL);
 
-	}
-	
-	private void givenReadyToCreate() {
-		OmokRoom omokRoom = new OmokRoom();
-		omokRoom.setRoomId(UUID.randomUUID().toString());
-		omokRoom.setTurn(BLACK_TURN);
-		omokRoom.setBoard(initBoard());
-		
-		when(omokRoomService.createOmokRoom()).thenReturn(omokRoom);
 	}
 	
 	private void givenARoomExist() {

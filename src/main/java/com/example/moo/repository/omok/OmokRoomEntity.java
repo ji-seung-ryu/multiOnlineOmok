@@ -15,8 +15,15 @@ public class OmokRoomEntity {
 	@Id
 	private String roomId;
 	
+	@Column
+	private String creator;
+	
+	@Column
+	private String opposite;
+
     @Column
 	private int turn;
+        
 	
     @Lob
     private String board;

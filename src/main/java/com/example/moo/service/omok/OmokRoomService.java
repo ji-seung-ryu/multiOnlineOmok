@@ -16,9 +16,11 @@ public class OmokRoomService {
 		this.omokRoomRepositoryInterface = omokRoomRepositoryInterface;
 	}
 	
-	public OmokRoom createOmokRoom() {
+	public OmokRoom createOmokRoom(String creator, String opposite) {
 		OmokRoom omokRoom = new OmokRoom();
 		omokRoom.setRoomId(UUID.randomUUID().toString());
+		omokRoom.setCreator(creator);
+		omokRoom.setOpposite(opposite);
 		omokRoom.setTurn(BLACK_TURN);
 		omokRoom.setBoard(initBoard());
 		save(omokRoom);

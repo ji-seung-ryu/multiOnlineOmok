@@ -2,17 +2,31 @@
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
-  <title>This is a omok</title>
-  <link rel="stylesheet" type="text/css" href="/css/omokRoom.css">
+	<meta charset="UTF-8">
+	<title>This is a omok</title>
+	<link rel="stylesheet" type="text/css" href="/css/omokRoom.css">
 </head>
 
 <body>
-  <div class="board">
+	<div class="board">
 
-  </div>
-  <script type="text/javascript" src="/js/omokRoom.js"></script>
+	</div>
+	<script th:inline="javascript">
 
+		/*<![CDATA[*/
+
+		var username = /*[[${name}]]*/ 'default';
+		var omokRoom = /*[[${omokRoom}]]*/ 'default';
+		
+
+		/*]]>*/
+
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script type="text/javascript" src="/js/omokRoom.js"></script>
+	<script type="text/javascript" src="/js/omokRoomWebSocket.js"></script>=
 </body>
 
 </html>

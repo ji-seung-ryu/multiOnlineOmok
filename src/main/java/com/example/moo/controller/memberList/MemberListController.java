@@ -36,7 +36,7 @@ public class MemberListController {
 	@GetMapping ("/memberList")
 	public String returnMemberList (HttpServletRequest request, Model model) {
 		try {
-			getLoginMember(request, model);
+			getName(request, model);
 			getMemberList(model);
 			
 			return "memberList";
@@ -46,19 +46,19 @@ public class MemberListController {
 		}
 	}
 	
-	private Member getLoginMember (HttpServletRequest request, Model model)  throws NoSessionException{
-		Member member = findLoginMemberBySession(request);
-		LOGGER.info("Hello {}!", member.getName());
-		model.addAttribute ("name", member.getName());
+	private String getName (HttpServletRequest request, Model model)  throws NoSessionException{
+		String name = findNameBySession(request);
+		LOGGER.info("Hello {}!", name);
+		model.addAttribute ("name", name);
 
-		return member;
+		return name;
 	}
 	
-	private Member findLoginMemberBySession (HttpServletRequest request)  throws NoSessionException{
+	private String findNameBySession (HttpServletRequest request)  throws NoSessionException{
 		HttpSession session = request.getSession();
-		Member member = (Member) session.getAttribute(SessionConstants.LOGIN_MEMBER);
-		if (member == null) throw new NoSessionException();
-		return member;
+		String name = (String)session.getAttribute(SessionConstants.LOGIN_MEMBER);
+		if (name == null) throw new NoSessionException();
+		return name;
 	}
 	
 	private void getMemberList (Model model) {

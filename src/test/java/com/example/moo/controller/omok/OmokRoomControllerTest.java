@@ -6,6 +6,8 @@ import static org.mockito.Mockito.when;
 
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.ui.Model;
 
@@ -26,6 +28,7 @@ public class OmokRoomControllerTest {
 
 	private final String CORRECT_URL = "omokRoom";
 	private Model model = mock(Model.class);
+	private HttpServletRequest request= (HttpServletRequest) mock(HttpServletRequest.class);
 	private OmokRoomService omokRoomService = mock(OmokRoomService.class);
 	private final OmokRoomController omokRoomController = new OmokRoomController(omokRoomService);
 	
@@ -33,14 +36,14 @@ public class OmokRoomControllerTest {
 	@Test
 	void enterRoom() {
 		givenARoomExist();
-		String returnUrl = omokRoomController.enterOmokRoom(ROOMID, model);
+		String returnUrl = omokRoomController.enterOmokRoom(ROOMID, request, model);
 		assertThat(returnUrl).isEqualTo(CORRECT_URL);
 	}
 	
 	@Test
 	void enterNotExistingRoom() {
 		givenARoomDoesNotExist();
-		String returnUrl = omokRoomController.enterOmokRoom(WRONG_ROOMID, model);
+		String returnUrl = omokRoomController.enterOmokRoom(WRONG_ROOMID, request, model);
 		assertThat(returnUrl).isNotEqualTo(CORRECT_URL);
 
 	}
@@ -48,7 +51,7 @@ public class OmokRoomControllerTest {
 	@Test
 	void enterFullRoom() {
 		givenARoomFull();
-		String returnUrl = omokRoomController.enterOmokRoom(FULL_ROOMID, model);
+		String returnUrl = omokRoomController.enterOmokRoom(FULL_ROOMID, request,  model);
 		assertThat(returnUrl).isNotEqualTo(CORRECT_URL);
 
 	}

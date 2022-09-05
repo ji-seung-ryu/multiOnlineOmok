@@ -43,7 +43,7 @@ public class LoginController {
 		try {
 			Member loginMember = doLogin(loginForm);
 			activateMember(loginMember);
-			setSession(request, loginMember);
+			setSession(request, loginMember.getName());
 			
 			return "redirect:/memberList";
 		} catch (NameNotFoundException e) {
@@ -67,9 +67,9 @@ public class LoginController {
 		this.loginNeedService.saveMember(member);
 	}
 		
-	private void setSession(HttpServletRequest request, Member loginMember) {
+	private void setSession(HttpServletRequest request, String name) {
 		HttpSession session = request.getSession();
-		session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMember);
+		session.setAttribute(SessionConstants.LOGIN_MEMBER, name);
 	}
 
 }

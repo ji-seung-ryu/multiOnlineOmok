@@ -46,7 +46,7 @@ function onMessageReceived(payload) {
 }
 
 function informStone (r, c, turn){
-	var c = JSON.stringify({r:r, c:c, turn:turn});
+	var c = JSON.stringify({r:r, c:c, turn:turn, roomId: omokRoom.roomId});
 	stompClient.send("/app/message.put",
 		{},
 		JSON.stringify({ sender: username, receiver: receiver, type: 'PUT_STONE', content: c})

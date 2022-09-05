@@ -3,14 +3,15 @@ const WHITE = 1;
 const NONE = 2;
 const WIDTH = 19, HEIGHT = 19;
 var turn = BLACK;
-var board = create2DArray(HEIGHT, WIDTH);
+var board = createBoard(HEIGHT, WIDTH);
 
-function create2DArray(rows, columns) {
+function createBoard(rows, columns) {
 	var arr = new Array(rows);
 	for (var i = 0; i < rows; i++) {
 		arr[i] = new Array(columns);
 		for (var j = 0; j < columns; j++) {
-			arr[i][j] = NONE;
+			arr[i][j] = omokRoom.board[i][j];
+			
 		}
 	}
 	return arr;
@@ -38,11 +39,23 @@ function makeBoard() {
 		}
 		board.appendChild(row);
 	}
+	initBoard();
 }
 
 function canPutStone(r, c) {
-	if (r >= 1 && r < 18 && c >= 1 && c < 18) return true;
+	if (r >= 1 && r < HEIGHT-1 && c >= 1 && c < WIDTH-1) return true;
 	else return false;
+}
+
+function initBoard(){
+	for (var r=1 ;r<HEIGHT-1; r++){
+		for (var c=1;c<WIDTH-1 ;c++){
+			if (board[r][c] != NONE){
+				var stone = returnStone(r, c);
+				drawStone(stone, board[r][c]);
+			} 
+		}
+	}
 }
 
 function addClickEvent() {
@@ -67,7 +80,7 @@ function putStone(stone) {
 	}
 	board[r][c] = turn;
 
-	drawStone(stone);
+	drawStone(stone, turn);
 	checkIsFinished(r, c);
 
 	informStone (r,c,turn);
@@ -86,9 +99,10 @@ function getRowColumn(stone) {
 	return { r, c };
 }
 
-function drawStone(stone) {
+function drawStone(stone, prevTurn) {
 	stone.style.border = "1px solid black";
-	if (turn == BLACK) stone.style.backgroundColor = "black";
+	console.log(prevTurn);
+	if (prevTurn == BLACK) stone.style.backgroundColor = "black";
 	else stone.style.backgroundColor = "white";
 }
 
@@ -129,11 +143,11 @@ function connectedStones(r, c, dy, dx) {
 }
 
 function updateBoard(stoneInfo){
-	var r = stoneInfo.r, c= stoneInfo.c, turn = stoneInfo.turn;
+	var r = stoneInfo.r, c= stoneInfo.c, prevTurn = stoneInfo.turn;
 	var stone = returnStone(r,c);
-	board[r][c] = turn;
+	board[r][c] = prevTurn;
 
-	drawStone(stone);
+	drawStone(stone, board[r][c]);
 	checkIsFinished(r, c);
 
 	turnChange();

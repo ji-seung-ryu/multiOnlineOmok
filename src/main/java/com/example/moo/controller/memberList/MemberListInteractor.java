@@ -8,10 +8,10 @@ import com.example.moo.service.member.Member;
 import com.example.moo.service.member.MemberService;
 
 @Component
-public class MemberListNeedService {
+public class MemberListInteractor {
 	private final MemberService memberService;
 
-	public MemberListNeedService(MemberService memberService) {
+	public MemberListInteractor(MemberService memberService) {
 		this.memberService = memberService;
 	}
 	

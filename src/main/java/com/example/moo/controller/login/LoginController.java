@@ -22,9 +22,9 @@ public class LoginController {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
-	private final LoginNeedService loginNeedService;
+	private final LoginInteractor loginNeedService;
 
-	public LoginController(LoginNeedService loginNeedService) {
+	public LoginController(LoginInteractor loginNeedService) {
 		this.loginNeedService = loginNeedService;
 	}
 

@@ -16,7 +16,7 @@ public class LoginControllerTest {
 	private static final String PASSWORD = "asdasd";
 	
 
-	private LoginNeedService loginNeedService = mock(LoginNeedService.class);
+	private LoginInteractor loginNeedService = mock(LoginInteractor.class);
 	private LoginController loginController = new LoginController(loginNeedService);
 	
 	@Test

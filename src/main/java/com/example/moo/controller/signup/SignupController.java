@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class SignupController {
 	
     private final static Logger LOGGER = LoggerFactory.getLogger(SignupController.class);
-    private final SignupNeedService signupNeedService;
+    private final SignupInteractor signupNeedService;
 	
-	public SignupController (SignupNeedService signupNeedService) {
+	public SignupController (SignupInteractor signupNeedService) {
 		this.signupNeedService = signupNeedService; 
 	}
 	

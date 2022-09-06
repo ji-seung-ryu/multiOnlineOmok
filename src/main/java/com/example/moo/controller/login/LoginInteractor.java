@@ -10,13 +10,13 @@ import com.example.moo.service.member.MemberNotFoundException;
 import com.example.moo.service.member.MemberService;
 
 @Component
-public class LoginNeedService {
-	private final static Logger LOGGER = LoggerFactory.getLogger(LoginNeedService.class);
+public class LoginInteractor {
+	private final static Logger LOGGER = LoggerFactory.getLogger(LoginInteractor.class);
 
 	private final MemberService memberService;
 	private final PasswordEncoder passwordEncoder;
 
-	public LoginNeedService(MemberService memberService, PasswordEncoder passwordEncoder) {
+	public LoginInteractor(MemberService memberService, PasswordEncoder passwordEncoder) {
 		this.memberService = memberService;
 		this.passwordEncoder = passwordEncoder;
 

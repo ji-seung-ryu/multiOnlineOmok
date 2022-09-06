@@ -1,12 +1,16 @@
 package com.example.moo.controller.webSocket;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.example.moo.service.omok.OmokRoom;
+import com.example.moo.service.omok.OmokRoomNotFoundException;
 import com.example.moo.service.omok.OmokRoomService;
 
 @Component
 public class OmokWebSocketInteractor {
+	private final static Logger LOGGER = LoggerFactory.getLogger(OmokWebSocketInteractor.class);
 
 	private final OmokRoomService omokRoomService;
 	
@@ -22,8 +26,9 @@ public class OmokWebSocketInteractor {
 			room.setBoard(board);
 			this.omokRoomService.save(room);
 			
-		} catch(Exception e) {
-			
+		} catch(OmokRoomNotFoundException e) {
+			LOGGER.info("No Room, roomId : {}", roomId);
 		}
 	}
+	
 }

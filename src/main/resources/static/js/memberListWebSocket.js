@@ -62,7 +62,7 @@ function fightHandler (message){
 }
 
 function getInvite(opposite){
-	if (confirm("can you play omok with "+ opposite)) {
+	if (confirm("can you play omok with "+ opposite+"?")) {
 		agreeFight(opposite);		
 	} else {
 		refuseFight(opposite);
@@ -86,12 +86,11 @@ function refuseFight(opposite){
 }
 
 function getRefuse(opposite){
-	console.log (opposite + " refused!"); 
+	alert (opposite + " refused!"); 
 }
 
-async function getAgree(opposite){
+async function getAgree(opposite){	
 	var roomId = await createOmokRoom(opposite);
-	console.log("roomID: ",roomId);
 	sendRoomId(opposite, roomId);
 	enterRoom(roomId);
 }
@@ -128,8 +127,7 @@ function inviteFight (receiver){
 		{},
 		JSON.stringify({ sender: username, receiver: receiver, type: 'FIGHT', content: c})
 	)
+	alert("waiting for response..");
 }
-
-
 
 connect();

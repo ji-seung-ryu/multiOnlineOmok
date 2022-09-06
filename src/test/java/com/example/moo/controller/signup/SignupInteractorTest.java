@@ -12,12 +12,12 @@ import com.example.moo.service.member.Member;
 import com.example.moo.service.member.MemberNotFoundException;
 import com.example.moo.service.member.MemberService;
 
-public class SignupNeedServiceTest {
+public class SignupInteractorTest {
 	private final String NAME = "jiseung";
 	
 	private final MemberService memberService = mock(MemberService.class);
 	private final PasswordEncoder passwordEncoder = mock(PasswordEncoder.class);
-	private final SignupNeedService signupNeedService = new SignupNeedService(memberService, passwordEncoder);
+	private final SignupInteractor signupNeedService = new SignupInteractor(memberService, passwordEncoder);
 	
 
 	@Test

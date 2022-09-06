@@ -4,6 +4,12 @@ const NONE = 2;
 const WIDTH = 19, HEIGHT = 19;
 var turn = BLACK;
 var board = createBoard(HEIGHT, WIDTH);
+var receiver;
+
+function getReceiver(){
+	if (username === omokRoom.creator && username !== omokRoom.opposite) receiver = omokRoom.opposite;
+	else receiver = omokRoom.creator;
+}
 
 function createBoard(rows, columns) {
 	var arr = new Array(rows);
@@ -17,7 +23,13 @@ function createBoard(rows, columns) {
 	return arr;
 }
 
-function makeBoard() {
+
+function makeVersus (){
+	var versus = document.querySelector('.versus');
+	versus.innerText = omokRoom.creator + " VS " + omokRoom.opposite; 
+}
+
+function makeHTMLBoard() {
 	var board = document.querySelector('.board');
 	for (var r = 1; r < HEIGHT; r++) {
 		var row = document.createElement("div");
@@ -39,7 +51,7 @@ function makeBoard() {
 		}
 		board.appendChild(row);
 	}
-	initBoard();
+	initHTMLBoard();
 }
 
 function canPutStone(r, c) {
@@ -47,7 +59,7 @@ function canPutStone(r, c) {
 	else return false;
 }
 
-function initBoard(){
+function initHTMLBoard(){
 	for (var r=1 ;r<HEIGHT-1; r++){
 		for (var c=1;c<WIDTH-1 ;c++){
 			if (board[r][c] != NONE){
@@ -81,9 +93,10 @@ function putStone(stone) {
 	board[r][c] = turn;
 
 	drawStone(stone, turn);
+	informStone (r,c,turn);
 	checkIsFinished(r, c);
 
-	informStone (r,c,turn);
+	
 	turnChange();
 }
 
@@ -108,8 +121,14 @@ function drawStone(stone, prevTurn) {
 
 function checkIsFinished(r, c) {
 	if (isFinished(r, c)) {
-		if (turn == BLACK) console.log("BLACK WIN!");
-		else console.log("WHITE WIN!");
+		if (turn == BLACK) {
+			alert(omokRoom.creator+ " win!!");
+		}
+		else{
+			alert(omokRoom.opposite+ " win!!");
+
+		}
+		returnMemberListPage();
 	}
 }
 
@@ -142,6 +161,11 @@ function connectedStones(r, c, dy, dx) {
 	return 1 + connectedStones(r + dy, c + dx, dy, dx);
 }
 
+function returnMemberListPage(){
+	location.href = `/memberList`;
+}
+
+
 function updateBoard(stoneInfo){
 	var r = stoneInfo.r, c= stoneInfo.c, prevTurn = stoneInfo.turn;
 	var stone = returnStone(r,c);
@@ -163,5 +187,16 @@ function returnStone(r, c){
 	return returnStone;
 }
 
-makeBoard();
+function noticeTurn(){
+	if (isMyTurn()) {
+		alert(username+" 차례입니다.");
+	} else {
+		alert(receiver+ " 차례입니다.")
+	}
+	
+}
+getReceiver();
+makeVersus();
+makeHTMLBoard();
 addClickEvent();
+noticeTurn();

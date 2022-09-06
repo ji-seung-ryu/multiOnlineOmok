@@ -15,7 +15,7 @@ public class SignupControllerTest {
 	private static final String PASSWORD = "asdasd";
 	private static final String FAILRETURN = "signup";
 	BindingResult bindingResult = mock(BindingResult.class);
-	SignupNeedService signupNeedService = mock(SignupNeedService.class);
+	SignupInteractor signupNeedService = mock(SignupInteractor.class);
 	SignupController signupController = new SignupController(signupNeedService);
 	
 	@Test

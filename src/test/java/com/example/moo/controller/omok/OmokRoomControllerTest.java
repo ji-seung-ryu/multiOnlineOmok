@@ -7,10 +7,12 @@ import static org.mockito.Mockito.when;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.ui.Model;
 
+import com.example.moo.controller.login.SessionConstants;
 import com.example.moo.service.omok.FullRoomException;
 import com.example.moo.service.omok.OmokRoom;
 import com.example.moo.service.omok.OmokRoomNotFoundException;
@@ -21,13 +23,13 @@ public class OmokRoomControllerTest {
 	private final int BOARD_SIZE = 19; 
 	private final int NONE = 2; 
 	private final String CREATOR = "creator";
-	private final String OPPOSITE = "opposite";
 	private final String ROOMID = "12341234";
 	private final String WRONG_ROOMID = "12341111234";
 	private final String FULL_ROOMID = "FULLROOMID";
 
 	private final String CORRECT_URL = "omokRoom";
 	private Model model = mock(Model.class);
+	private HttpSession session = mock(HttpSession.class);
 	private HttpServletRequest request= (HttpServletRequest) mock(HttpServletRequest.class);
 	private OmokRoomService omokRoomService = mock(OmokRoomService.class);
 	private final OmokRoomController omokRoomController = new OmokRoomController(omokRoomService);
@@ -35,6 +37,7 @@ public class OmokRoomControllerTest {
 	
 	@Test
 	void enterRoom() {
+		givenACreatorSessionExist();
 		givenARoomExist();
 		String returnUrl = omokRoomController.enterOmokRoom(ROOMID, request, model);
 		assertThat(returnUrl).isEqualTo(CORRECT_URL);
@@ -42,6 +45,7 @@ public class OmokRoomControllerTest {
 	
 	@Test
 	void enterNotExistingRoom() {
+		givenACreatorSessionExist();
 		givenARoomDoesNotExist();
 		String returnUrl = omokRoomController.enterOmokRoom(WRONG_ROOMID, request, model);
 		assertThat(returnUrl).isNotEqualTo(CORRECT_URL);
@@ -50,11 +54,18 @@ public class OmokRoomControllerTest {
 	
 	@Test
 	void enterFullRoom() {
+		givenACreatorSessionExist();
 		givenARoomFull();
 		String returnUrl = omokRoomController.enterOmokRoom(FULL_ROOMID, request,  model);
 		assertThat(returnUrl).isNotEqualTo(CORRECT_URL);
 
 	}
+	
+	private void givenACreatorSessionExist() {
+		when(request.getSession()).thenReturn(session);
+		when(session.getAttribute(SessionConstants.LOGIN_MEMBER)).thenReturn(CREATOR);
+	}
+	
 	
 	private void givenARoomExist() {
 		OmokRoom omokRoom = new OmokRoom();

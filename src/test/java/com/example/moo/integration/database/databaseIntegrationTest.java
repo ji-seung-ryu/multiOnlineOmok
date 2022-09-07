@@ -2,6 +2,7 @@ package com.example.moo.integration.database;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -18,9 +19,10 @@ public class databaseIntegrationTest {
 	MemberRepositoryWrapper memberRepositoryWrapper;
 	
 	private final Integer ID = 4;
-	private final String NAME = "JssISEUNG";
+	private final String NAME = "JISSEUNG";
 	private final String ENCODEDPASSWORD = "123456789123456789";
 	
+    @Transactional
 	@Test
 	public void saveMember () {
 		Member member = new Member();

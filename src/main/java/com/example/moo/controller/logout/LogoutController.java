@@ -34,14 +34,15 @@ public class LogoutController {
 	}
 	
 	private void inactivateMember(HttpSession session) {
-		Member member = getMemberBySession(session);
+		String name = getNameBySession(session);
+		Member member = this.memberService.findMemberByName(name);
 		member.setState(MemberStatusType.INACTIVE);
 		this.memberService.saveMember(member);
 		LOGGER.info("inactivate member, NAME : {}", member.getName());
 	}
 	
-	private Member getMemberBySession(HttpSession session) {
-		return (Member) session.getAttribute(SessionConstants.LOGIN_MEMBER);
+	private String getNameBySession(HttpSession session) {
+		return (String)session.getAttribute(SessionConstants.LOGIN_MEMBER);
 	}
 	private void invalidateSession(HttpSession session) {
 		session.invalidate();

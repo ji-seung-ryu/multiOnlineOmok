@@ -26,7 +26,7 @@
 <div align="center">
   
 
-<h3 align="center">multiOnlineOmok</h3>
+<h3 align="center">MultiOnlineOmok</h3>
 
   <p align="center">
     you can signup, login, multi-omok
@@ -72,14 +72,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="images/signup.png" alt="signup" >
 you can register
-<img src="images/login.png" alt="login" >
+<img src="images/signup.png" alt="signup" >
 you can login
-<img src="images/memberList.png" alt="memberList" >
+<img src="images/login.png" alt="login" >
 you can see active members
-<img src="images/omokRoom.png" alt="omokRoom" >
+<img src="images/memberList.png" alt="memberList" >
 you can play omok with others 
+<img src="images/omokRoom.png" alt="omokRoom" >
+
  
 
 
@@ -89,8 +90,7 @@ you can play omok with others
 
 ### Built With
 
-* [SPRING BOOT](https://expressjs.com/)
-* [JQuery](https://jquery.com)
+* [SPRING BOOT](https://spring.io/projects/spring-boot/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

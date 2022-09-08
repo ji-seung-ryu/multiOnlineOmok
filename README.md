@@ -168,7 +168,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 [https://www.instagram.com/ji_seungg/?hl=ko](https://www.instagram.com/ji_seungg/?hl=ko)
 
-[https://github.com/ji-seung-ryu/multiOmokOnline](https://github.com/ji-seung-ryu/multiOmokOnline)
+[https://github.com/ji-seung-ryu/multiOnlineOmok](https://github.com/ji-seung-ryu/multiOnlineOmok)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

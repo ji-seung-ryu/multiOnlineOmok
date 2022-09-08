@@ -73,12 +73,19 @@
 ## About The Project
 
 you can register
+<br>
 <img src="images/signup.png" alt="signup" >
+<br>
 you can login
+<br>
 <img src="images/login.png" alt="login" >
+<br>
 you can see active members
+<br>
 <img src="images/memberList.png" alt="memberList" >
+<br>
 you can play omok with others 
+<br>
 <img src="images/omokRoom.png" alt="omokRoom" >
 
  

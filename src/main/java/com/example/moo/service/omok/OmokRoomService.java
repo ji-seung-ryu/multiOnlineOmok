@@ -41,10 +41,6 @@ public class OmokRoomService {
 		return omokRoom.get();
 	}
 	
-	public void putStone (String roomId, int r, int c, int turn) {
-		
-	}
-	
 	private int[][] initBoard(){
 		int[][] board = new int[BOARD_SIZE][BOARD_SIZE];
 		for (int i=1;i<BOARD_SIZE;i++) {

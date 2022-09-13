@@ -51,7 +51,8 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
     <li>
@@ -93,6 +94,9 @@ you can play omok with others
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Architecture
+
+<img src="images/multionlineomok.drawio.png" alt="architecture" >
 
 
 ### Built With

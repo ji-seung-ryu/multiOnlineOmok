@@ -11,12 +11,12 @@ import com.example.moo.service.member.MemberNotFoundException;
 import com.example.moo.service.member.MemberService;
 
 @Component
-public class SignupInteractor {
+public class SignupServiceWrapper {
 	
 	private final MemberService memberService;
 	private final PasswordEncoder passwordEncoder;
 	
-	public SignupInteractor (MemberService memberService, PasswordEncoder passwordEncoder) {
+	public SignupServiceWrapper (MemberService memberService, PasswordEncoder passwordEncoder) {
 		this.memberService = memberService;
 		this.passwordEncoder = passwordEncoder;
 	}

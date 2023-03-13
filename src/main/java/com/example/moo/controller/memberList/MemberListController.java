@@ -20,9 +20,9 @@ import com.example.moo.service.member.Member;
 public class MemberListController {
 	
 	private final static Logger LOGGER = LoggerFactory.getLogger(MemberListController.class);
-	private final MemberListInteractor memberListNeedService;
+	private final MemberListServiceWrapper memberListNeedService;
 	
-	public MemberListController(MemberListInteractor memberListNeedService) {
+	public MemberListController(MemberListServiceWrapper memberListNeedService) {
 		this.memberListNeedService = memberListNeedService;
 	}
 	/*

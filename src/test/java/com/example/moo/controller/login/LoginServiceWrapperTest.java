@@ -16,13 +16,13 @@ import com.example.moo.service.member.Member;
 import com.example.moo.service.member.MemberNotFoundException;
 import com.example.moo.service.member.MemberService;
 
-public class LoginInteractorTest {
+public class LoginServiceWrapperTest {
 	private final String NAME = "JISEUNG";
 	private final String PASSWORD = "12855";
 	
 	MemberService memberService = mock(MemberService.class);
 	PasswordEncoder passwordEncoder = mock(PasswordEncoder.class);
-	LoginInteractor loginNeedService = new LoginInteractor(memberService, passwordEncoder);
+	LoginServiceWrapper loginNeedService = new LoginServiceWrapper(memberService, passwordEncoder);
 	
 	@Test
 	void successLogin() {

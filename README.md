@@ -99,7 +99,9 @@ you can play omok with others
 controller-service part
 <br>
 <img src="images/controller-service.drawio.png" alt="architecture" >
+<img src="images/controller-service.drawio.png" alt="architecture" >
 
+<img src="images/multionlineomok.drawio.png" alt="architecture" >
 <br>
 service-repository part 
 <br>

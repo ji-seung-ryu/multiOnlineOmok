@@ -95,17 +95,12 @@ you can play omok with others
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Architecture
+
 <br>
-controller-service part
-<br>
-<img src="images/controller-service.drawio.png" alt="architecture" >
-<img src="images/controller-service.drawio.png" alt="architecture" >
 
 <img src="images/multionlineomok.drawio.png" alt="architecture" >
 <br>
-service-repository part 
-<br>
-<img src="images/service-repo.drawio.png" alt="architecture" >
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
